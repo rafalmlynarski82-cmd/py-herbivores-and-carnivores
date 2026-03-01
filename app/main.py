@@ -5,7 +5,7 @@ class Animal:
     alive: list["Animal"] = []
 
     def __init__(
-        self,
+        self: "Animal",
         name: str,
         health: int = 100,
         hidden: bool = False,
@@ -16,7 +16,7 @@ class Animal:
         Animal.alive.append(self)
 
     def take_damage(
-        self,
+        self: "Animal",
         amount: int,
     ) -> None:
         self.health -= amount
@@ -25,7 +25,7 @@ class Animal:
             Animal.alive.remove(self)
 
     def __repr__(
-        self,
+        self: "Animal",
     ) -> str:
         return (
             f"{{Name: {self.name}, "
@@ -36,14 +36,14 @@ class Animal:
 
 class Herbivore(Animal):
     def hide(
-        self,
+        self: "Herbivore",
     ) -> None:
         self.hidden = not self.hidden
 
 
 class Carnivore(Animal):
     def bite(
-        self,
+        self: "Carnivore",
         other: Animal,
     ) -> None:
         if isinstance(other, Herbivore) and not other.hidden:
